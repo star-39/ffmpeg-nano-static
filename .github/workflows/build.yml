@@ -38,8 +38,8 @@ jobs:
         with:
           draft: false
           prerelease: false
-          release_name: ${{ steps.version.outputs.version }}
-          tag_name: ${{ github.ref }}
+          release_name: ${{ github.sha }}
+          tag_name: ${{ github.sha }}
           body: FFmpeg
         env:
           GITHUB_TOKEN: ${{ github.token }}
