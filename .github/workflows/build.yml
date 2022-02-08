@@ -27,9 +27,31 @@ jobs:
       - run: |
                 chmod +x build.sh
                 ./build.sh
-        
-      - uses: actions/upload-artifact@v2
+#       - uses: actions/upload-artifact@v2
+#         with:
+#           name: ffmpeg-binary
+#           path: /usr/local/bin/ffmpeg
+      
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
         with:
-          name: ffmpeg-binary
-          path: /usr/local/bin/ffmpeg
+          draft: false
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ github.ref }}
+          body: FFmpeg
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          
+          
+      - name: upload linux artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: /usr/local/bin/ffmpeg
+          asset_name: ffmpeg
+          asset_content_type: application/octet-stream
       
