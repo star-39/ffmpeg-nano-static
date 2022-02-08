@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install -y nasm
+sudo apt install -y nasm
 
 cd
 
