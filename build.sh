@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt install -y nasm
+
 cd
 
 curl -Lo ffmpeg.tar.gz "https://git.ffmpeg.org/gitweb/ffmpeg.git/snapshot/master.tar.gz" && \
