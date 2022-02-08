@@ -19,7 +19,7 @@ export PKG_CONFIG_PATH="/usr/local/lib64/pkgconfig:/usr/local/lib/pkgconfig:/usr
 cd x264 
 ./configure --enable-static --disable-cli 
 make -j$(nproc)
-make install
+sudo make install
 cd
 
 cd ffmpeg
@@ -35,7 +35,7 @@ cd ffmpeg
   --enable-libx264 
 
 make -j$(nproc)
-make install
+sudo make install
 cd
 
 
