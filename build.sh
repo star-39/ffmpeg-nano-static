@@ -35,3 +35,5 @@ cd ffmpeg
 make -j$(nproc)
 make install
 cd
+
+
